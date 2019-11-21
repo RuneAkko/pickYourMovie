@@ -1,0 +1,98 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+{% block title %}
+temp
+{% endblock %}
+{% block script_1 %}
+<!-- list-css -->
+<link rel="stylesheet" href="{% static 'index/list-css/list.css' %}" type="text/css" media="all" />
+<!-- //list-css -->
+{% endblock %}
+
+{% block body_1 %}
+<div class="general-agileits-w3l">
+		<div class="w3l-medile-movies-grids">
+
+            <div class="movie-browse-agile">
+                        <!--/browse-agile-w3ls -->
+						<div class="browse-agile-w3ls general-w3ls">
+								<div class="tittle-head">
+									<h4 class="latest-text">{{ move.types }}类电影</h4>
+									<div class="container">
+										<div class="agileits-single-top">
+											<ol class="breadcrumb">
+											  <li><a href="/">主页</a></li>
+											  <li class="active">{{ move.types }}</li>
+											</ol>
+										</div>
+									</div>
+								</div>
+
+
+
+
+
+
+                         <div class="container">
+                            {% for ele in move %}
+							   <div class="col-md-3 w3l-movie-gride-agile">
+										 <a href="/single/{{ ele.herf }}" class="hvr-shutter-out-horizontal"><img src="{{ ele.img }}" title="album-name" alt="图片暂无">
+									     <div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
+									</a>
+									  <div class="mid-1">
+										<div class="w3l-movie-text">
+											<h6><a href="/single/{{ ele.herf }}">{{ ele.title }}</a></h6>
+										</div>
+										<div class="mid-2">
+											<p>{{ ele.release_date }}</p>
+											<div class="block-stars">
+												<ul class="w3l-ratings">
+													     <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+														 <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+														 <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+														 <li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
+														 <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+												</ul>
+											</div>
+											<div class="clearfix"></div>
+										</div>
+									</div>
+                                </div>
+                            {% endfor %}
+                        </div>
+
+
+
+
+
+
+
+
+
+                        </div>
+
+
+
+
+
+
+                        <!--//browse-agile-w3ls -->
+						<div class="blog-pagenat-wthree">
+							<ul>
+								<li><a class="frist" href="#">Prev</a></li>
+								<li><a href="#">1</a></li>
+								<li><a href="#">2</a></li>
+								<li><a href="#">3</a></li>
+								<li><a href="#">4</a></li>
+								<li><a href="#">5</a></li>
+								<li><a class="last" href="#">Next</a></li>
+							</ul>
+						</div>
+            </div>
+
+		</div>
+
+	</div>
+{% endblock %}
+{% block body_2 %}
+{% endblock %}

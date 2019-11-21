@@ -1,0 +1,44 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+{% block title %}搜索结果{% endblock %}
+
+{% block script_1 %}
+<!-- news-css -->
+<link rel="stylesheet" href="{% static 'index/news-css/news.css' %}" type="text/css" media="all" />
+<!-- //news-css -->
+
+<!-- list-css -->
+<link rel="stylesheet" href="{% static 'index/list-css/list.css' %}" type="text/css" media="all" />
+<!-- //list-css -->
+{% endblock %}
+
+
+{% block body_1 %}
+    <div class="bs-docs-example">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+{#							<th>#</th>#}
+							<th>电影名称</th>
+							<th>类型</th>
+							<th>上映日期</th>
+                            <th>评分</th>
+						</tr>
+					</thead>
+					<tbody>
+                            {% for ele in moves %}
+
+                            <tr>
+                            <td><a href="/single/{{ ele.herf }}">{{ ele.title }}</a></td>
+							<td>{{ ele.types }}</td>
+							<td>{{ ele.release_date }}</td>
+							<td>{{ ele.score }}</td>
+                            </tr>
+
+                            {% endfor %}
+					</tbody>
+				</table>
+			</div>
+{% endblock %}
+{% block body_2 %}
+{% endblock %}

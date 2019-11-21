@@ -1,0 +1,172 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+{% block title %}
+single
+{% endblock %}
+
+{% block script_1 %}
+<script type="text/javascript" src="{% static 'index/js/jquery-2.1.4.min.js' %}"></script>
+<script type="text/css" src="{% static 'btn/demo.css' %}"></script>
+<!-- news-css -->
+<link rel="stylesheet" href="{% static 'index/news-css/news.css' %}" type="text/css" media="all" />
+<!-- //news-css -->
+<!-- list-css -->
+<link rel="stylesheet" href="{% static 'index/list-css/list.css' %}" type="text/css" media="all" />
+<!-- //list-css -->
+<script type="text/javascript">
+
+	$(function(){
+		$("#praise").click(function(){
+			var praise_img = $("#praise-img");
+			var text_box = $("#add-num");
+			var praise_txt = $("#praise-txt");
+			var num=parseInt(praise_txt.text());
+			if(praise_img.attr("src") == ("{% static 'btn/yizan.png' %}")){
+				$(this).html("<img src='{% static "btn/zan.png" %}' id='praise-img' class='animation' />");
+				praise_txt.removeClass("hover");
+				text_box.show().html("<em class='add-animation'>-1</em>");
+				$(".add-animation").removeClass("hover");
+				num -=1;
+				praise_txt.text(num)
+			}else{
+				$(this).html("<img src='{% static 'btn/yizan.png' %}' id='praise-img' class='animation' />");
+				praise_txt.addClass("hover");
+				text_box.show().html("<em class='add-animation'>+1</em>");
+				$(".add-animation").addClass("hover");
+				num +=1;
+				praise_txt.text(num)
+			}
+
+		});
+	})
+</script>
+<script type="text/javascript">
+    function good(move_id, action) {
+        {#alert('ok')#}
+        $.ajax({
+            url: '/user_profile_edit',
+            type: 'POST',
+            data: {
+                "id": move_id,
+                "action": action
+            },
+            {#dataType: "JSON",#}
+            success: function (e) {
+                if(e){
+                    alert('已收集偏好')
+                }else{
+                    alert('网络异常')
+                }
+            }
+        });
+    }
+</script>
+<style type="text/css">
+img {
+  vertical-align: middle;
+}
+
+.img-responsive,
+.thumbnail > img,
+.thumbnail a > img,
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+  display: block;
+  max-width: 50%;
+  height: auto;
+}
+
+.img-responsive1{
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+</style>
+{% endblock %}
+
+
+
+{% block body_1 %}
+<div class="container">
+		<!-- /w3l-medile-movies-grids -->
+    <br>
+    <div class="agileits-single-top">
+				<ol class="breadcrumb">
+				  <li><a href="/">主页</a></li>
+{#                    <li><a href="{{  }}" >{{  }}</a></li>#}
+				  <li class="active">{{ move.title }}</li>
+				</ol>
+    </div>
+<br>
+    <div class="single-page-agile-info">
+           <div class="show-top-grids-w3lagile">
+				<div class="col-sm-12">
+					<div class="song">
+						<div class="song-info">
+							<h3>{{ move.title }}<br></h3>
+					    </div>
+
+						<div class="video-grid-single-page-agileits">
+							<div data-video="dLmKio67pVQ" id="video"> <img src="{{ move.img }}" alt="" class="img-responsive center-block"/> </div>
+						</div>
+					</div>
+				</div>
+                <div class="grid_3 grid_5 agile">
+
+				<div class="well">
+					主演：<br>
+                    {{ move.actors }}
+                </div>
+				</div>
+                <a href="#" class="list-group-item"><span class="badge badge-warning">{{ move.vote_count }}</span> <i class="ti ti-bookmark"></i>评分：{{ move.score }}</a><br>
+			    </div>
+                <div class="praise" style="text-align: center">
+                    <span id="praise" onclick="good({{ move.herf }},'like')"><img src="{% static 'btn/zan.png' %}" id="praise-img" /></span>
+                    <span id="praise-txt">0</span>
+                    <span id="add-num"><em>+1</em></span>
+                </div>
+<!--动态点赞结束-->
+
+
+            <div class="clearfix"></div>
+    </div>
+{% endblock %}
+
+{% block body_2 %}
+
+<div class="general">
+		<h4 class="latest-text w3_latest_text">你可能喜欢</h4>
+		<div class="container">
+			<div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+				<div id="myTabContent" class="tab-content">
+					<div role="tabpanel" class="tab-pane fade active in" id="home" aria-labelledby="home-tab">
+						<div class="w3_agile_featured_movies">
+							{% for ele in like %}
+							<div class="col-md-2 w3l-movie-gride-agile">
+								<a class="hvr-shutter-out-horizontal" href="/single/{{ ele.herf }}">
+                                <img src="{{ ele.img }}" title="album-name" class="img-responsive1" alt=" " />
+                                <div class="w3l-action-icon"><i class="fa fa-play-circle" aria-hidden="true"></i></div>
+								</a>
+								<div class="mid-1 agileits_w3layouts_mid_1_home">
+									<div class="w3l-movie-text">
+										<h6><a href="/single/{{ ele.herf }}">{{ ele.title }}</a></h6>
+									</div>
+									<div class="mid-2 agile_mid_2_home">
+										<p>{{ ele.release_date }}</p>
+										<div class="clearfix"></div>
+									</div>
+								</div>
+
+							</div>
+							{% endfor %}
+							<div class="clearfix"> </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</div>
+{% endblock %}

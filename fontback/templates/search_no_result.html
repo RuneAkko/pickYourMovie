@@ -1,0 +1,302 @@
+<html lang="en">
+{% load staticfiles %}
+<head>
+<title>Short Codes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content=""/>
+
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //for-mobile-apps -->
+<link href="{% static 'index/css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
+<link href="{% static 'index/css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+<link rel="stylesheet" href="{% static 'index/css/contactstyle.css' %}" type="text/css" media="all" />
+<link rel="stylesheet" href="{% static 'index/css/faqstyle.css' %}" type="text/css" media="all" />
+<link href="{% static 'index/css/single.css' %}" rel='stylesheet' type='text/css' />
+<link href="{% static 'index/css/medile.css' %}" rel='stylesheet' type='text/css' />
+<!-- news-css -->
+<link rel="stylesheet" href="{% static 'index/news-css/news.css' %}" type="text/css" media="all" />
+<!-- //news-css -->
+
+<!-- list-css -->
+<link rel="stylesheet" href="{% static 'index/list-css/list.css' %}" type="text/css" media="all" />
+<!-- //list-css -->
+<!-- font-awesome icons -->
+<link rel="stylesheet" href="{% static 'index/css/font-awesome.min.css' %}" />
+<!-- //font-awesome icons -->
+<!-- js -->
+<script type="text/javascript" src="{% static 'index/js/jquery-2.1.4.min.js' %}"></script>
+<!-- //js -->
+<script type="text/javascript" src="{% static 'index/js/move-top.js' %}"></script>
+<script type="text/javascript" src="{% static 'index/js/easing.js' %}"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});
+	});
+</script>
+<!-- start-smoth-scrolling -->
+
+</head>
+<body>
+    <!-- header -->
+	<div class="header">
+		<div class="container">
+			<div class="">
+				<div style="font-size:25px;color:#1b9336;border-bottom:5px solid #eef9eb">
+    	        <span style="font-size:20px;font-weight:bold">AC</span> [<span style="color:#0092c8">1</span><span style="color:#ffad68">0</span><span>1</span><span style="color:#0092c8">1</span><span style="color:#ffad68">]</span>
+            </div>
+			</div>
+			<div class="w3_search">
+				<form action="/search_list/" method="post">
+                {% csrf_token %}
+                    <label for="search_sth"></label>
+					<input id="search_sth" type="text" name="Search" placeholder="电影搜索" required="">
+					<input type="submit" value="Go">
+				</form>
+			</div>
+			<div class="w3l_sign_in_register">
+				<ul>
+{#					<li><i class="fa fa-phone" aria-hidden="true"></i> (+000) 123 345 653</li>#}
+					<li><a href="#" data-toggle="modal" data-target="#myModal">登录</a></li>
+				</ul>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+<!-- //header -->
+<!-- bootstrap-pop-up -->
+	<div class="modal video-modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					登录 & 注册
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				</div>
+				<section>
+					<div class="modal-body">
+						<div class="w3_login_module">
+							<div class="module form-module">
+							  <div class="toggle"><i class="fa fa-times fa-pencil"></i>
+								<div class="tooltip">单击</div>
+							  </div>
+							  <div class="form">
+								<h3>登录会员账户</h3>
+								<form action="#" method="post">
+								  <input type="text" name="Username" placeholder="Username" required="">
+								  <input type="password" name="Password" placeholder="Password" required="">
+								  <input type="submit" value="Login">
+								</form>
+							  </div>
+							  <div class="form">
+								<h3>新建会员账户</h3>
+								<form action="#" method="post">
+								  <input type="text" name="Username" placeholder="Username" required="">
+								  <input type="password" name="Password" placeholder="Password" required="">
+								  <input type="email" name="Email" placeholder="Email Address" required="">
+								  <input type="text" name="Phone" placeholder="Phone Number" required="">
+								  <input type="submit" value="Register">
+								</form>
+							  </div>
+							  <div class="cta"><a href="#">忘记密码？</a></div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+	</div>
+	<script>
+		$('.toggle').click(function(){
+		  // Switches the Icon
+		  $(this).children('i').toggleClass('fa-pencil');
+		  // Switches the forms
+		  $('.form').animate({
+			height: "toggle",
+			'padding-top': 'toggle',
+			'padding-bottom': 'toggle',
+			opacity: "toggle"
+		  }, "slow");
+		});
+	</script>
+<!-- //bootstrap-pop-up -->
+<!-- nav -->
+	<div class="movies_nav">
+		<div class="container">
+			<nav class="navbar navbar-default">
+				<div class="navbar-header navbar-left">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+					<nav>
+						<ul class="nav navbar-nav">
+							<li class="active"><a href="/">主页</a></li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">类型<b class="caret"></b></a>
+								<ul class="dropdown-menu multi-column columns-3">
+									<li>
+									<div class="col-sm-4">
+										<ul class="multi-column-dropdown">
+											<li><a href="moves_list/action">动作</a></li>
+											<li><a href="moves_list/plot">剧情</a></li>
+											<li><a href="moves_list/comedy">喜剧</a></li>
+											<li><a href="moves_list/love">爱情</a></li>
+											<li><a href="moves_list/science">科幻</a></li>
+											<li><a href="moves_list/strange">悬疑</a></li>
+                                            <li><a href="moves_list/disaster">灾难</a></li>
+										</ul>
+									</div>
+									<div class="col-sm-4">
+										<ul class="multi-column-dropdown">
+											<li><a href="moves_list/thriller">惊悚</a></li>
+											<li><a href="moves_list/terror">恐怖</a></li>
+                                            <li><a href="moves_list/crime">犯罪</a></li>
+                                            <li><a href="moves_list/homo">同性</a></li>
+                                            <li><a href="moves_list/music">音乐</a></li>
+                                            <li><a href="moves_list/dance">歌舞</a></li>
+                                            <li><a href="moves_list/gongfu">武侠</a></li>
+										</ul>
+									</div>
+									<div class="col-sm-4">
+										<ul class="multi-column-dropdown">
+											 <li><a href="moves_list/bio">传记</a></li>
+                                            <li><a href="moves_list/history">历史</a></li>
+                                            <li><a href="moves_list/war">战争</a></li>
+                                            <li><a href="moves_list/west">西部</a></li>
+                                            <li><a href="moves_list/fariy">奇幻</a></li>
+                                            <li><a href="moves_list/adventure">冒险</a></li>
+                                            <li><a href="moves_list/sexy">情色</a></li>
+										</ul>
+									</div>
+									<div class="clearfix"></div>
+									</li>
+								</ul>
+							</li>
+{#							<li><a href="series.html">tv - series</a></li>#}
+{#							<li><a href="news.html">news</a></li>#}
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">地区<b class="caret"></b></a>
+								<ul class="dropdown-menu multi-column columns-3">
+									<li>
+										<div class="col-sm-4">
+											<ul class="multi-column-dropdown">
+												<li><a href="#">中国大陆</a></li>
+                                                <li><a href="#">香港</a></li>
+												<li><a href="#">台湾</a></li>
+												<li><a href="#">日本</a></li>
+												<li><a href="#">韩国</a></li>
+                                                <li><a href="#">印度</a></li>
+												<li><a href="#">泰国</a></li>
+											</ul>
+										</div>
+										<div class="col-sm-4">
+											<ul class="multi-column-dropdown">
+												<li><a href="#">英国</a></li>
+												<li><a href="#">法国</a></li>
+												<li><a href="#">德国</a></li>
+												<li><a href="#">意大利</a></li>
+                                                <li><a href="#">伊朗</a></li>
+                                                <li><a href="#">澳大利亚</a></li>
+                                                <li><a href="#">瑞典</a></li>
+                                                <li><a href="#">丹麦</a></li>
+											</ul>
+										</div>
+										<div class="col-sm-4">
+											<ul class="multi-column-dropdown">
+												<li><a href="#">西班牙</a></li>
+												<li><a href="#">俄罗斯</a></li>
+                                                <li><a href="#">加拿大</a></li>
+                                                <li><a href="#">爱尔兰</a></li>
+                                                <li><a href="#">巴西</a></li>
+											</ul>
+										</div>
+										<div class="clearfix"></div>
+									</li>
+								</ul>
+							</li>
+{#							<li><a href="short-codes.html">Short Codes</a></li>#}
+{#							<li><a href="list.html">A - z list</a></li>#}
+                            <li><a href="moves_list">推荐</a></li>
+						</ul>
+					</nav>
+				</div>
+			</nav>
+		</div>
+	</div>
+<!-- //nav -->
+    <div><br></div>
+    <div class="alert alert-warning" role="alert">
+					<strong>抱歉！</strong> 您来到了无片可看的荒原。
+				</div>
+<!-- footer -->
+	<div class="footer">
+		<div class="container">
+			<div class="w3ls_footer_grid">
+				<div class="col-md-6 w3ls_footer_grid_left">
+					<div class="w3ls_footer_grid_left1">
+						<h2>联系我们</h2>
+						<div class="w3ls_footer_grid_left1_pos">
+							<form action="mhs_holo@outlook.com" method="post">
+								<input type="email" name="email" placeholder="你的邮箱" required="">
+								<input type="submit" value="发送">
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 w3ls_footer_grid_right">
+					<a href="index.html"><h2><span>1011</span>AC</h2></a>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+				<p>Copyright &copy; 2018.Company name All rights reserved.</p>
+                <p>Designed &amp; Developed by <a href="#">AC1011 Team</a></p>
+			</div>
+
+			<div class="clearfix"> </div>
+    </div>
+<!-- //footer -->
+
+<script>
+$(document).ready(function(){
+    $(".dropdown").hover(
+        function() {
+            $('.dropdown-menu', this).stop( true, true ).slideDown("fast");
+            $(this).toggleClass('open');
+        },
+        function() {
+            $('.dropdown-menu', this).stop( true, true ).slideUp("fast");
+            $(this).toggleClass('open');
+        }
+    );
+});
+</script>
+<!-- //Bootstrap Core JavaScript -->
+<!-- here stars scrolling icon -->
+<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+				var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear'
+				};
+			*/
+
+			$().UItoTop({ easingType: 'easeOutQuart' });
+
+			});
+	</script>
+<!-- //here ends scrolling icon -->
+<a href="#" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 0.88;"></span>To Top</a>
+</body>
+</html>
